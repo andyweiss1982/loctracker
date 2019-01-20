@@ -7,9 +7,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'tracker' %>
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <h3>Logged in as <%= current_user.email %> | <%= link_to "Log Out", destroy_user_session_path, method: :delete %></h3>
+    <% end %>
     <%= yield %>
   </body>
 </html>
